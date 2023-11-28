@@ -1,3 +1,6 @@
+我们希望每次处理一个新的数据集的时候，使用同样的函数将其处理为各个变量：x-数据特征, y-未来结果, z-对决策带来bias的特征, a-过往决策。
+在本次数据集中，y对应第30列”Expected Cumulative grade point average in the graduation“；z对应第2列”Sex“以及第31列”Course ID“；a是我们根据第29列”Cumulative grade point average in the last semester“以及第32列”OUTPUT Grade“生成的决策，1表示”被录取“，0表示“被拒绝”；x是数据中分出z和y之后剩下的其他所有特征。
+
 这里，我们假设一个问题：根据学生的现有成绩（现有GPA以及各个课程的成绩）——x，以及预期的未来GPA——y，判断学校该不该给学生master offer——a。\
 如果是按照individual academic performance也就是学生的现有GPA以及各个课程的成绩给offer，那么我们规定：只有现有GPA在4以上的，才能被考虑；同时录取名额有限制：只有m名同学可以被录取，那么我们再规定：当GPA相同时，课程成绩越高的学生会被录取。这样我们就得到了初始的决策结果——a_original。\
 $\pi_0(a_t | x_t, z_t)$\
